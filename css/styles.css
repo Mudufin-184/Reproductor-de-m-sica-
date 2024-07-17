@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #800080, #000000, #0000FF);
+
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.player-container {
+    width: 350px;
+    background-color: #121212;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #1db954;
+}
+
+.album-cover img {
+    width: 100%;
+    height: auto;
+}
+
+.song-info {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.song-info h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.song-info h2 {
+    margin: 5px 0 0 0;
+    font-size: 18px;
+    color: #b3b3b3;
+}
+
+.progress-bar {
+    width: 90%;
+    height: 5px;
+    background-color: #404040;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    width: 40%;
+    height: 100%;
+    background-color: #1db954;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.next-song {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.next-song span {
+    color: #1db954;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.control-btn img {
+    width: 30px;
+    height: auto;
+}
+
+.play-pause img {
+    width: 40px;
+}
