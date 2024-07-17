@@ -11,19 +11,53 @@ body {
 }
 
 .player-container {
-    width: 350px;
+    position: relative;
+    width: 390px;
+    height: 848px;
     background-color: #121212;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom right,#0000FF , #000000,#800080bd );
 }
 
 .header {
+    position: absolute;
+    top: 10px;
+    left: 128px;
     padding: 10px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    background-color: #1db954;
+    border-radius: 12px;
+    background-color: #2f3632a2;
+}
+.header-albun {
+    position: absolute;
+    top: 21px;
+    left: 43px;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    /* background-color: #1db954; */
+}
+.header-albun i{
+    font-size: 48px;
+}
+.header-lista {
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    /* background-color: #1db954; */
+}
+
+.header-lista{
+    font-size: 48px;
 }
 
 .album-cover img {
@@ -42,7 +76,7 @@ body {
 }
 
 .song-info h2 {
-    margin: 5px 0 0 0;
+    margin: 12px 0 0 0;
     font-size: 18px;
     color: #b3b3b3;
 }
@@ -50,6 +84,7 @@ body {
 .progress-bar {
     width: 90%;
     height: 5px;
+    margin: 50px;
     background-color: #404040;
     margin: 0 auto;
     border-radius: 5px;
@@ -67,6 +102,7 @@ body {
 }
 
 .next-song {
+    margin: 10px 0 0 0;
     text-align: center;
     padding: 10px 0;
     font-size: 14px;
@@ -81,6 +117,7 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
+    margin: 4px 14px 19px 14px;
 }
 
 .control-btn {
@@ -94,6 +131,137 @@ body {
     height: auto;
 }
 
-.play-pause img {
-    width: 40px;
+.control-btn-left{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.control-btn-left img{
+    height: 30px;
+    rotate: 180deg;
+}
+
+.play-pause i {
+    font-size: 65px;
+    color: #fff;
+    /* background: #1db954; */
+}
+
+.control-aletorio{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.control-favorite{
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+.control-favorite{
+    font-size: 34px;
+    color: #fff;
+}
+
+
+/* Css del boton de megusta */
+.love-heart:before, #switch {
+    display: none;
+}
+
+.love-heart, .love-heart::after {
+    border-color: hsl(231deg 28% 86%);
+    border: 3px solid;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 30px;
+    height: 24px; /* Ajustado proporcionalmente */
+    border-bottom: 0;
+}
+
+.round {
+    position: absolute;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    background: hsl(0deg 0% 100%);
+    box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+    border-radius: 100%;
+    left: 0px;
+    bottom: -3px; /* Ajustado proporcionalmente */
+    transition: all 0.5s ease;
+    animation: check-animation2 0.5s forwards;
+}
+
+input:checked + label .round {
+    transform: translate(0px, 0px);
+    animation: check-animation 0.5s forwards;
+    background-color: hsl(0deg 0% 100%);
+}
+
+@keyframes check-animation {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(0px, 21px); /* Ajustado proporcionalmente */
+    }
+    100% {
+        transform: translate(21px, 21px); /* Ajustado proporcionalmente */
+    }
+}
+
+@keyframes check-animation2 {
+    0% {
+        transform: translate(21px, 21px); /* Ajustado proporcionalmente */
+    }
+    50% {
+        transform: translate(0px, 21px); /* Ajustado proporcionalmente */
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.love-heart {
+    box-sizing: border-box;
+    position: relative;
+    transform: rotate(-45deg) translate(-50%, -33px) scale(1); /* Ajustado proporcionalmente */
+    display: block;
+    border-color: hsl(231deg 28% 86%);
+    cursor: pointer;
+    top: 0;
+}
+
+input:checked + .love-heart, input:checked + .love-heart::after, input:checked + .love-heart .bottom {
+    border-color: hsl(347deg 81% 61%);
+    box-shadow: inset 18px -15px 0px 6px hsl(347deg 99% 72%); /* Ajustado proporcionalmente */
+}
+
+.love-heart::after, .love-heart .bottom {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-color: hsl(231deg 28% 86%);
+}
+
+.love-heart::after {
+    right: -27px; /* Ajustado proporcionalmente */
+    transform: rotate(90deg);
+    top: 21px; /* Ajustado proporcionalmente */
+}
+
+.love-heart .bottom {
+    width: 33px; /* Ajustado proporcionalmente */
+    height: 33px; /* Ajustado proporcionalmente */
+    border-left: 3px solid;
+    border-bottom: 3px solid;
+    border-color: hsl(231deg 28% 86%);
+    left: -3px; /* Ajustado proporcionalmente */
+    top:15px; /* Ajustado proporcionalmente */
+    border-radius: 0px 0px 0px 15px; /* Ajustado proporcionalmente */
 }
