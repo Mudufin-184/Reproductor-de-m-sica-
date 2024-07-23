@@ -276,6 +276,7 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     height: 5px;
     background: #ddd;
     cursor: pointer;
+    margin: 10px auto;
 }
 
 .progress {
@@ -285,6 +286,12 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     transition: width 0.1s;
 }
 
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin: 0 30px 0 30px;
+}
 
 .barrareproductor{
     position: relative;
