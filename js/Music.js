@@ -12,6 +12,5 @@ document.addEventListener("DOMContentLoaded", function() {
             greeting.textContent = 'Buenas Noches ✨';
         }
     };
-
     updateGreeting();
 });
