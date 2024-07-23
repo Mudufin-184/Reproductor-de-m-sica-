@@ -148,6 +148,13 @@ body {
     color: #fff;
     /* background: #1db954; */
 }
+a {
+    font-size: 50px;
+    color: #fff;
+
+}
+
+   
 
 .control-aletorio{
     background: none;
