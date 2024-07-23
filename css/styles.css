@@ -62,7 +62,8 @@ body {
 
 .album-cover img {
     width: 100%;
-    height: auto;
+    height: 530px;
+    object-fit: cover;
 }
 
 .song-info {
@@ -182,7 +183,7 @@ body {
     border-bottom: 0;
 }
 
-.round {
+/* .round {
     position: absolute;
     z-index: 1;
     width: 24px;
@@ -192,9 +193,9 @@ body {
     border-radius: 100%;
     left: 0px;
     bottom: -3px; /* Ajustado proporcionalmente */
-    transition: all 0.5s ease;
+    /*transition: all 0.5s ease;
     animation: check-animation2 0.5s forwards;
-}
+} */
 
 input:checked + label .round {
     transform: translate(0px, 0px);
@@ -234,6 +235,7 @@ input:checked + label .round {
     border-color: hsl(231deg 28% 86%);
     cursor: pointer;
     top: 0;
+    transition: 0.1;
 }
 
 input:checked + .love-heart, input:checked + .love-heart::after, input:checked + .love-heart .bottom {
@@ -247,12 +249,14 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     box-sizing: border-box;
     position: absolute;
     border-color: hsl(231deg 28% 86%);
+    transition: 0.1;
 }
 
 .love-heart::after {
     right: -27px; /* Ajustado proporcionalmente */
     transform: rotate(90deg);
     top: 21px; /* Ajustado proporcionalmente */
+    transition: 0.1;
 }
 
 .love-heart .bottom {
@@ -264,6 +268,7 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     left: -3px; /* Ajustado proporcionalmente */
     top:15px; /* Ajustado proporcionalmente */
     border-radius: 0px 0px 0px 15px; /* Ajustado proporcionalmente */
+    transition: 0.1;
 }
 
 .progress-bar {
@@ -278,4 +283,12 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     height: 100%;
     background: #4caf50;
     transition: width 0.1s;
+}
+
+
+.barrareproductor{
+    position: relative;
+    top: -380px;
+    z-index: -99;
+    background: transparent;
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <section class="player-container">
+    <section id="player-view" class="player-container">
         <div class="header">
             Chill Collection
         </div>
@@ -29,11 +29,11 @@
              <i class="bi bi-collection-play"></i>           
         </div>
         <div class="album-cover">
-            <img src="img/pexels-pixabay-34221.jpg" alt="Chained to the Rhythm">
+            <img id="song-image" src="images/default.jpg"  alt="Chained to the Rhythm">
         </div>
         <div class="song-info">
-            <h1>Chained to the Rhythm</h1>
-            <h2>Katy Perry</h2>
+            <h1 id="song-name">Chained to the Rhythm</h1>
+            <h2 id="artist-name">Katy Perry</h2>
         </div>
         <div class="progress-bar">
             <div class="progress"></div>
@@ -42,13 +42,181 @@
             Next: <span>Shake It Off (Taylor Swift)</span>
         </div>
         <div class="controls">
-
-            <button class="control-favorite"><i class="bi bi-music-note-list"></i></button>
-            <button class="control-btn-left"><img src="img/forward-button (1).png" alt="Prev"></button>
-            <button class="control-btn play-pause"><i class="bi bi-play-circle"></i></button>
-            <button class="control-btn"><img src="img/forward-button (1).png" alt="Next"></button>
-            <button class="control-aletorio"><img src="img/shuffle-arrows.png" alt="Aleatorio"></button>
+ 
+            <button class="control-favorite" onclick="window.location.href='list.html'"><i class="bi bi-music-note-list"></i></button>
+            <button id="prev-btn"  class="control-btn-left"><img src="img/forward-button (1).png" alt="Prev"></button>
+            <button id="play-pause-btn" class="control-btn play-pause"><i class="bi bi-play-circle"></i></button>
+            <button id="next-btn" class="control-btn"><img src="img/forward-button (1).png" alt="Next"></button>
+            <button id="shuffle-btn"class="control-aletorio"><img src="img/shuffle-arrows.png" alt="Aleatorio"></button>
         </div>
+
+        <audio class="barrareproductor" id="audio-player" controls></audio>
     </section>
+    <script>
+        let isPlaying = false;
+        let isShuffle = false;
+        let currentIndex = 0;
+
+        const songs = [
+                {
+                    artist: 'AC DC',
+                    songName: 'Thunderstruck',
+                    songPath: 'music/AC DC  Thunderstruck (Official Video).mp3',
+                    imagePath: 'images/AC DC  Thunderstruck (Official Video).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'Back In Black',
+                    songPath: 'music/AC DC  Back In Black (Live At River Plate, December 2009).mp3',
+                    imagePath: 'images/AC DC  Back In Black (Live At River Plate, December 2009).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'For Those About To Rock',
+                    songPath: 'music/AC DC  For Those About To Rock (with lyrics).mp3',
+                    imagePath: 'images/AC DC For Those About To Rock (with lyrics).jpg'
+                },
+                {
+                    artist: 'Aidan Gallagher',
+                    songName: '4th Of July',
+                    songPath: 'music/4th Of July - Aidan Gallagher (Subtitulada al Español).mp3',
+                    imagePath: 'images/4th Of July - Aidan Gallagher (Subtitulada al Español).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'Hells Bells',
+                    songPath: 'music/AC DC  Hells Bells (Official 4K Video).mp3',
+                    imagePath: 'images/AC DC  Hells Bells (Official 4K Video).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'Let There Be Rock',
+                    songPath: 'music/AC DC  Let There Be Rock (Apollo Theatre, Glasgow, April 1978).mp3',
+                    imagePath: 'images/AC DC  Let There Be Rock (Apollo Theatre, Glasgow, April 1978).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'Rock or Bust',
+                    songPath: 'music/AC DC  Rock or Bust (Official Video).mp3',
+                    imagePath: 'images/AC DC  Rock or Bust (Official Video).jpg'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'ROCK',
+                    songPath: 'music/AC DC  ROCK.mp3',
+                    imagePath: 'images/AC  DC  ROCK.png'
+                },
+                {
+                    artist: 'AC DC',
+                    songName: 'You Shook Me All Night Long',
+                    songPath: 'music/AC DC  You Shook Me All Night Long (Official 4K Video).mp3',
+                    imagePath: 'images/AC DC  You Shook Me All Night Long (Official 4K Video).jpg'
+                },
+                {
+                    artist: 'Billie Eilish',
+                    songName: 'Bad Guy',
+                    songPath: 'music/BAD GUY BILLIE EILISH LETRA EN ESPAÑOL.mp3',
+                    imagePath: 'images/BAD GUY BILLIE EILISH LETRA EN ESPAÑOL.jpg'
+                },
+                {
+                    artist: 'Banners',
+                    songName: 'Someone To You',
+                    songPath: 'music/Banners  Someone To You (sub. español).mp3',
+                    imagePath: 'images/BANNERS Someone To You (sub. español).png'
+                },
+                {
+                    artist: 'Benson Boone',
+                    songName: 'Beautiful Things',
+                    songPath: 'music/Benson Boone  Beautiful Things (Español  Lyrics)  video musical.mp3',
+                    imagePath: 'images/Benson Boone Beautiful Things.jpg' // Asegúrate de tener esta imagen en la carpeta images
+                },
+                {
+                    artist: 'Billie Eilish',
+                    songName: 'When The Party’s Over',
+                    songPath: 'music/Billie Eilish when the party over (Traducida al Español).mp3',
+                    imagePath: 'images/Billie Eilish  when the partys over (Traducida al Español).jpg'
+                },
+                {
+                    artist: 'Ed Sheeran',
+                    songName: 'Perfect',
+                    songPath: 'music/Ed Sheeran Perfect (Sub Español).mp3',
+                    imagePath: 'images/Ed Sheeran Perfect (Sub Español).png'
+                },
+                {
+                    artist: 'Ember Island',
+                    songName: 'Umbrella',
+                    songPath: 'music/Ember Island Umbrella (Español).mp3',
+                    imagePath: 'images/Ember Island Umbrella.jpg'
+                },
+                {
+                    artist: 'Lewis Capaldi',
+                    songName: 'Someone You Loved',
+                    songPath: 'music/Someone You Loved  Lewis Capaldi Subtitulada Lyrics.mp3',
+                    imagePath: 'images/Someone You Loved  Lewis Capaldi.jpg'
+                }
+            ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedSong = JSON.parse(sessionStorage.getItem('selectedSong'));
+            if (selectedSong) {
+                loadSong(selectedSong);
+                currentIndex = songs.findIndex(song => song.songPath === selectedSong.songPath);
+            }
+            document.getElementById('play-pause-btn').addEventListener('click', togglePlayPause);
+            document.getElementById('next-btn').addEventListener('click', playNextSong);
+            document.getElementById('prev-btn').addEventListener('click', playPrevSong);
+            document.getElementById('shuffle-btn').addEventListener('click', toggleShuffle);
+        });
+
+        function loadSong(song) {
+            document.getElementById('song-image').src = song.imagePath;
+            document.getElementById('artist-name').textContent = song.artist;
+            document.getElementById('song-name').textContent = song.songName;
+            document.getElementById('audio-player').src = song.songPath;
+        }
+
+        function togglePlayPause() {
+            const audioPlayer = document.getElementById('audio-player');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            if (isPlaying) {
+                audioPlayer.pause();
+                playPauseBtn.innerHTML = '<i class="bi bi-play-circle"></i>';
+            } else {
+                audioPlayer.play();
+                playPauseBtn.innerHTML = '<i class="bi bi-pause-circle"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function playNextSong() {
+            if (isShuffle) {
+                currentIndex = Math.floor(Math.random() * songs.length);
+            } else {
+                currentIndex = (currentIndex + 1) % songs.length;
+            }
+            loadSong(songs[currentIndex]);
+            togglePlayPause();
+        }
+
+        function playPrevSong() {
+            if (isShuffle) {
+                currentIndex = Math.floor(Math.random() * songs.length);
+            } else {
+                currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            }
+            loadSong(songs[currentIndex]);
+            togglePlayPause();
+        }
+
+        function toggleShuffle() {
+            isShuffle = !isShuffle;
+            const shuffleBtn = document.getElementById('shuffle-btn');
+            if (isShuffle) {
+                shuffleBtn.classList.add('active');
+            } else {
+                shuffleBtn.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
