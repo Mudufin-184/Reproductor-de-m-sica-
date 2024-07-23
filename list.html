@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App Layout</title>
+    <link rel="stylesheet" href="css/stylesLista.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Good Evening ✨</h1>
+            <div class="profile-pic"></div>
+        </header>
+        <section class="followed-artists">
+            <h2>Followed Artist</h2>
+            <div class="artists">
+                <div class="artist">Calum Scott</div>
+                <div class="artist">Katy Perry</div>
+                <div class="artist">Blake Shelton</div>
+                <div class="artist">Ava Max</div>
+            </div>
+        </section>
+        <section class="recently-played">
+            <h2>Recently Played</h2>
+            <div class="tracks">
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">What do you...<br>Justin Bieber</div>
+                </div>
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">Ghost<br>Ella Henderson</div>
+                </div>
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">What do you...<br>Justin Bieber</div>
+                </div>
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">Ghost<br>Ella Henderson</div>
+                </div>
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">What do you...<br>Justin Bieber</div>
+                </div>
+                <div class="track">
+                    <div class="track-cover"></div>
+                    <div class="track-info">Ghost<br>Ella Henderson</div>
+                </div>
+            </div>
+        </section>
+        <section class="daily-playlists">
+            <h2>Top Daily Playlists</h2>
+            <div class="playlists">
+                <div class="playlist">
+                    <div class="playlist-cover"></div>
+                    <div class="playlist-info">Good Morning<br>By Unimap • 50 Songs</div>
+                </div>
+
+                <div class="playlist">
+                    <div class="playlist-cover"></div>
+                    <div class="playlist-info">Good Morning<br>By Unimap • 50 Songs</div>
+                </div>
+
+                <div class="playlist">
+                    <div class="playlist-cover"></div>
+                    <div class="playlist-info">Good Morning<br>By Unimap • 50 Songs</div>
+                </div>
+                
+                <div class="playlist">
+                    <div class="playlist-cover"></div>
+                    <div class="playlist-info">Good Morning<br>By Unimap • 50 Songs</div>
+                </div>
+            </div>
+        </section>
+        <section class="song-list">
+            <h2>Song List</h2>
+            <div class="list-music">
+                <div class="container">
+                    <div id="list-view">
+                        <h1>Song List</h1>
+                        <ul id="song-list">
+                            <!-- Song items will be dynamically generated here -->
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    const songs = [
+                        {
+                            artist: 'AC DC',
+                            songName: 'Thunderstruck',
+                            songPath: 'music/AC DC  Thunderstruck (Official Video).mp3',
+                            imagePath: 'images/AC DC  Thunderstruck (Official Video).jpg'
+                        },
+                        {
+                            artist: 'AC DC',
+                            songName: 'Back In Black',
+                            songPath: 'music/AC DC  Back In Black (Live At River Plate, December 2009).mp3',
+                            imagePath: 'images/AC  DC  ROCK.png'
+                        },
+                        {
+                            artist: 'Led Zeppelin',
+                            songName: 'Stairway to Heaven',
+                            songPath: 'music/Led Zeppelin - Stairway to Heaven.mp3',
+                            imagePath: 'images/Led Zeppelin - Stairway to Heaven.jpg'
+                        },
+                        {
+                            artist: 'Queen',
+                            songName: 'Bohemian Rhapsody',
+                            songPath: 'music/Queen - Bohemian Rhapsody.mp3',
+                            imagePath: 'images/Queen - Bohemian Rhapsody.jpg'
+                        },
+                        {
+                            artist: 'The Beatles',
+                            songName: 'Hey Jude',
+                            songPath: 'music/The Beatles - Hey Jude.mp3',
+                            imagePath: 'images/The Beatles - Hey Jude.jpg'
+                        }
+                    ];
+            
+                    document.addEventListener('DOMContentLoaded', () => {
+                        loadSongs();
+                    });
+            
+                    function loadSongs() {
+                        const songList = document.getElementById('song-list');
+                        songs.forEach((song, index) => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `
+                                <img src="${song.imagePath}" alt="Song Image">
+                                <div>
+                                    <h4>${song.artist}</h4>
+                                    <p>${song.songName}</p>
+                                </div>
+                            `;
+                            li.onclick = () => selectSong(index);
+                            songList.appendChild(li);
+                        });
+                    }
+            
+                    function selectSong(index) {
+                        const song = songs[index];
+                        sessionStorage.setItem('selectedSong', JSON.stringify(song));
+                        window.location.href = 'player.html';
+                    }
+                </script>
+            </div>
+            
+        </section>
+    </div>
+</body>
+</html>
