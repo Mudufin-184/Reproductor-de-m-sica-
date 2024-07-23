@@ -265,3 +265,17 @@ input:checked + .love-heart, input:checked + .love-heart::after, input:checked +
     top:15px; /* Ajustado proporcionalmente */
     border-radius: 0px 0px 0px 15px; /* Ajustado proporcionalmente */
 }
+
+.progress-bar {
+    width: 90%;
+    height: 5px;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #4caf50;
+    transition: width 0.1s;
+}

@@ -14,35 +14,34 @@
         </div>
 
         <div class="header-albun">
-           <div class="love">
+            <div class="love">
                 <input id="switch" type="checkbox">
                 <label class="love-heart" for="switch">
-                <i class="left"></i>
-                <i class="right"></i>
-                <i class="bottom"></i>
-                <div class="round"></div>
+                    <i class="left"></i>
+                    <i class="right"></i>
+                    <i class="bottom"></i>
+                    <div class="round"></div>
                 </label>
             </div>
         </div>
 
         <div class="header-lista">
-             <i class="bi bi-collection-play"></i>           
+            <i class="bi bi-collection-play"></i>           
         </div>
         <div class="album-cover">
             <img src="img/pexels-pixabay-34221.jpg" alt="Chained to the Rhythm">
         </div>
         <div class="song-info">
-            <h1>Chained to the Rhythm</h1>
-            <h2>Katy Perry</h2>
+            <h1 id="song-title">Chained to the Rhythm</h1>
+            <h2 id="artist-name">Katy Perry</h2>
         </div>
         <div class="progress-bar">
             <div class="progress"></div>
         </div>
         <div class="next-song">
-            Next: <span>Shake It Off (Taylor Swift)</span>
+            Next: <span id="next-song">Shake It Off (Taylor Swift)</span>
         </div>
         <div class="controls">
-
             <button class="control-favorite"><i class="bi bi-music-note-list"></i></button>
             <button class="control-btn-left"><img src="img/forward-button (1).png" alt="Prev"></button>
             <button class="control-btn play-pause"><i class="bi bi-play-circle"></i></button>
@@ -50,5 +49,7 @@
             <button class="control-aletorio"><img src="img/shuffle-arrows.png" alt="Aleatorio"></button>
         </div>
     </section>
+    <audio id="audio" src="musica/AC CD/AC DC Thunderstruck (Official Video).mp3" preload="auto"></audio>
+    <script src="js/main.js"></script>
 </body>
 </html>

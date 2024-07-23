@@ -13,6 +13,7 @@ body {
 }
 
 .app-container {
+    overflow-y: auto;
     width: 100%;
     max-width: 386px;
     height: 94%;
