@@ -13,6 +13,7 @@ body {
     overflow: hidden; /* Para evitar el scroll en el body */
 }
 
+
 .app-container {
     overflow-y: auto;
     width: 100%;
@@ -44,6 +45,15 @@ header {
 h2 {
     font-size: 18px;
     margin-bottom: 10px;
+}
+
+h4{
+    font-size: 20px;
+    margin: 22px 0px 0px;
+}
+p {
+    font-size: 18px;
+    margin: 15px;
 }
 
 .artists, .tracks, .playlists {
@@ -96,14 +106,16 @@ h2 {
 }
 
 .song-list li {
+    position:relative;
     display: flex;
     align-items: center;
     height: 60px;
     font-size: 14px;
     margin-bottom: 5px;
     padding: 10px;
-    background-color: #222;
+    background-color: #22222254;
     border-radius: 5px;
+    margin: 15px 0;
 }
 
 .song-list li img {
@@ -117,6 +129,7 @@ h2 {
     overflow-y: auto;
 }
 
+<<<<<<< HEAD
 .daily-playlists {
     padding:  0 20px;
 }
@@ -171,3 +184,11 @@ h2 {
 .song-info {
     margin-top: 5px;
 }
+=======
+.bi-play-circle::before {
+    position: absolute;
+    right: 10px;
+    font-size: 45px;
+    top: 17px;
+}
+>>>>>>> 8fc44eb3d231f6d4eb87386effdd534b5fd47d54

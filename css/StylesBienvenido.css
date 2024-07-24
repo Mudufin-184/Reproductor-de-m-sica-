@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sevillana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Kalnia+Glaze:wght@100..700&display=swap');
 
 body, html {
     margin: 0;
@@ -28,7 +28,7 @@ h1 {
 p {
     margin: 20px 0;
     font-size: 1.2em;
-    font-family:"Sevillana", cursive;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
 }
 
 .btn {
