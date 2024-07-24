@@ -42,7 +42,7 @@
     <div class="app-container">
         <header>
             <h1 id="greeting">Buenas Tardes ✨</h1>
-            <a href="bienvenido.html" class="bi bi-box-arrow-left"></a>
+            <a href="index.html" class="bi bi-box-arrow-left"></a>
         </header>
         <section class="followed-artists">
             <h2>Followed Artist</h2>
@@ -100,7 +100,6 @@
                         </ul>
                     </div>
                 </div>
-<<<<<<< HEAD
             </div>
             <script>
                 const songs = [
@@ -223,142 +222,15 @@
                         horizontalSongList.appendChild(li.cloneNode(true));
                         // Añadimos a la lista vertical
                         verticalSongList.appendChild(li);
-=======
-                <script>
-        const songs = [
-                {
-                    artist: 'AC DC',
-                    songName: 'Thunderstruck',
-                    songPath: 'music/AC DC  Thunderstruck (Official Video).mp3',
-                    imagePath: 'images/AC DC  Thunderstruck (Official Video).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'Back In Black',
-                    songPath: 'music/AC DC  Back In Black (Live At River Plate, December 2009).mp3',
-                    imagePath: 'images/AC DC  Back In Black (Live At River Plate, December 2009).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'For Those About To Rock',
-                    songPath: 'music/AC DC  For Those About To Rock (with lyrics).mp3',
-                    imagePath: 'images/AC DC For Those About To Rock (with lyrics).jpg'
-                },
-                {
-                    artist: 'Aidan Gallagher',
-                    songName: '4th Of July',
-                    songPath: 'music/4th Of July - Aidan Gallagher (Subtitulada al Español).mp3',
-                    imagePath: 'images/4th Of July - Aidan Gallagher (Subtitulada al Español).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'Hells Bells',
-                    songPath: 'music/AC DC  Hells Bells (Official 4K Video).mp3',
-                    imagePath: 'images/AC DC  Hells Bells (Official 4K Video).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'Let There Be Rock',
-                    songPath: 'music/AC DC  Let There Be Rock (Apollo Theatre, Glasgow, April 1978).mp3',
-                    imagePath: 'images/AC DC  Let There Be Rock (Apollo Theatre, Glasgow, April 1978).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'Rock or Bust',
-                    songPath: 'music/AC DC  Rock or Bust (Official Video).mp3',
-                    imagePath: 'images/AC DC  Rock or Bust (Official Video).jpg'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'ROCK',
-                    songPath: 'music/AC DC  ROCK.mp3',
-                    imagePath: 'images/AC  DC  ROCK.png'
-                },
-                {
-                    artist: 'AC DC',
-                    songName: 'You Shook Me All Night Long',
-                    songPath: 'music/AC DC  You Shook Me All Night Long (Official 4K Video).mp3',
-                    imagePath: 'images/AC DC  You Shook Me All Night Long (Official 4K Video).jpg'
-                },
-                {
-                    artist: 'Billie Eilish',
-                    songName: 'Bad Guy',
-                    songPath: 'music/BAD GUY BILLIE EILISH LETRA EN ESPAÑOL.mp3',
-                    imagePath: 'images/BAD GUY BILLIE EILISH LETRA EN ESPAÑOL.jpg'
-                },
-                {
-                    artist: 'Banners',
-                    songName: 'Someone To You',
-                    songPath: 'music/Banners  Someone To You (sub. español).mp3',
-                    imagePath: 'images/BANNERS Someone To You (sub. español).png'
-                },
-                {
-                    artist: 'Benson Boone',
-                    songName: 'Beautiful Things',
-                    songPath: 'music/Benson Boone  Beautiful Things (Español  Lyrics)  video musical.mp3',
-                    imagePath: 'images/Benson Boone Beautiful Things.jpg' 
-                },
-                {
-                    artist: 'Billie Eilish',
-                    songName: 'When The Party’s Over',
-                    songPath: 'music/Billie Eilish when the party over (Traducida al Español).mp3',
-                    imagePath: 'images/Billie Eilish  when the partys over (Traducida al Español).jpg'
-                },
-                {
-                    artist: 'Ed Sheeran',
-                    songName: 'Perfect',
-                    songPath: 'music/Ed Sheeran Perfect (Sub Español).mp3',
-                    imagePath: 'images/Ed Sheeran Perfect (Sub Español).png'
-                },
-                {
-                    artist: 'Ember Island',
-                    songName: 'Umbrella',
-                    songPath: 'music/Ember Island Umbrella (Español).mp3',
-                    imagePath: 'images/maxresdefault.jpEmber Island  Umbrella.jpg'
-                },
-                {
-                    artist: 'Lewis Capaldi',
-                    songName: 'Someone You Loved',
-                    songPath: 'music/Someone You Loved  Lewis Capaldi Subtitulada Lyrics.mp3',
-                    imagePath: 'images/Someone You Loved  Lewis Capaldi.jpg'
-                }
-            ];
-            
-          
-                    document.addEventListener('DOMContentLoaded', () => {
-                        loadSongs();
->>>>>>> 8fc44eb3d231f6d4eb87386effdd534b5fd47d54
                     });
                 }
             
-<<<<<<< HEAD
                 function selectSong(index) {
                     const song = songs[index];
                     sessionStorage.setItem('selectedSong', JSON.stringify(song));
                     window.location.href = 'player.html';
                 }
             </script>
-=======
-                    function loadSongs() {
-                        const songList = document.getElementById('song-list');
-                        songs.forEach((song, index) => {
-                            const li = document.createElement('li');
-                            li.innerHTML = `
-                                <img src="${song.imagePath}" alt="Song Image">
-                                <div>
-                                    <h4>${song.artist}</h4>
-                                    <p>${song.songName}</p>
-                                </div>  
-                                <div>
-                                    <i class="bi bi-play-circle"></i>
-                                </div>
-                                
-                            `;
-                            li.onclick = () => selectSong(index);
-                            songList.appendChild(li);
-                        });
-                    }
->>>>>>> 8fc44eb3d231f6d4eb87386effdd534b5fd47d54
             
             </div>
             

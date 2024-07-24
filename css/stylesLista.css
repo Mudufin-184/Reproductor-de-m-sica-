@@ -129,7 +129,6 @@ p {
     overflow-y: auto;
 }
 
-<<<<<<< HEAD
 .daily-playlists {
     padding:  0 20px;
 }
@@ -184,11 +183,3 @@ p {
 .song-info {
     margin-top: 5px;
 }
-=======
-.bi-play-circle::before {
-    position: absolute;
-    right: 10px;
-    font-size: 45px;
-    top: 17px;
-}
->>>>>>> 8fc44eb3d231f6d4eb87386effdd534b5fd47d54
