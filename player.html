@@ -158,6 +158,23 @@
                     imagePath: 'images/Someone You Loved  Lewis Capaldi.jpg'
                 }
             ];
+            document.addEventListener('DOMContentLoaded', () => {
+                const selectedSong = JSON.parse(sessionStorage.getItem('selectedSong'));
+                const playImmediately = sessionStorage.getItem('playImmediately') === 'true';
+                
+                if (selectedSong) {
+                    loadSong(selectedSong);
+                    currentIndex = songs.findIndex(song => song.songPath === selectedSong.songPath);
+                    updateNextSong();
+
+                    if (playImmediately) {
+                        togglePlayPause();
+                        sessionStorage.removeItem('playImmediately'); // Limpiamos el flag para futuras reproducciones
+                    }
+                }
+
+                // Otros manejadores de eventos...
+            });
 
             document.addEventListener('DOMContentLoaded', () => {
                 const selectedSong = JSON.parse(sessionStorage.getItem('selectedSong'));
@@ -185,84 +202,86 @@
                 document.getElementById('next-btn').addEventListener('click', playNextSong);
                 document.getElementById('prev-btn').addEventListener('click', playPrevSong);
                 document.getElementById('shuffle-btn').addEventListener('click', toggleShuffle);
-            });
 
-            function loadSong(song) {
-                document.getElementById('song-image').src = song.imagePath;
-                document.getElementById('artist-name').textContent = song.artist;
-                document.getElementById('song-name').textContent = song.songName;
-                document.getElementById('audio-player').src = song.songPath;
-                updateNextSong(); // Actualiza la próxima canción al cargar una nueva
-            }
+                        function loadSong(song) {
+                            document.getElementById('song-image').src = song.imagePath;
+                            document.getElementById('artist-name').textContent = song.artist;
+                            document.getElementById('song-name').textContent = song.songName;
+                            document.getElementById('audio-player').src = song.songPath;
+                            updateNextSong(); // Actualiza la próxima canción al cargar una nueva
+                        }
 
-            function updateNextSong() {
-                let nextIndex = isShuffle ? Math.floor(Math.random() * songs.length) : (currentIndex + 1) % songs.length;
-                if (nextIndex < 0) nextIndex = songs.length - 1; // En caso de que sea negativo
-                const nextSong = songs[nextIndex];
-                document.getElementById('next-song-name').textContent = `${nextSong.songName} (${nextSong.artist})`;
-            }
+                        function updateNextSong() {
+                            let nextIndex = isShuffle ? Math.floor(Math.random() * songs.length) : (currentIndex + 1) % songs.length;
+                            if (nextIndex < 0) nextIndex = songs.length - 1; // En caso de que sea negativo
+                            const nextSong = songs[nextIndex];
+                            document.getElementById('next-song-name').textContent = `${nextSong.songName} (${nextSong.artist})`;
+                        }
 
-            function togglePlayPause() {
-                const audioPlayer = document.getElementById('audio-player');
-                const playPauseBtn = document.getElementById('play-pause-btn');
-                if (isPlaying) {
-                    audioPlayer.pause();
-                    playPauseBtn.innerHTML = '<i class="bi bi-play-circle"></i>';
-                } else {
-                    audioPlayer.play();
-                    playPauseBtn.innerHTML = '<i class="bi bi-pause-circle"></i>';
-                }
-                isPlaying = !isPlaying;
-            }
+                        function togglePlayPause() {
+                            const audioPlayer = document.getElementById('audio-player');
+                            const playPauseBtn = document.getElementById('play-pause-btn');
+                            if (isPlaying) {
+                                audioPlayer.pause();
+                                playPauseBtn.innerHTML = '<i class="bi bi-play-circle"></i>';
+                            } else {
+                                audioPlayer.play();
+                                playPauseBtn.innerHTML = '<i class="bi bi-pause-circle"></i>';
+                            }
+                            isPlaying = !isPlaying;
+                        }
 
-            function playNextSong() {
-                if (isShuffle) {
-                    currentIndex = Math.floor(Math.random() * songs.length);
-                } else {
-                    currentIndex = (currentIndex + 1) % songs.length;
-                }
-                loadSong(songs[currentIndex]);
-                togglePlayPause();
-            }
+                        function playNextSong() {
+                            if (isShuffle) {
+                                currentIndex = Math.floor(Math.random() * songs.length);
+                            } else {
+                                currentIndex = (currentIndex + 1) % songs.length;
+                            }
+                            loadSong(songs[currentIndex]);
+                            togglePlayPause();
+                        }
 
-            function playPrevSong() {
-                if (isShuffle) {
-                    currentIndex = Math.floor(Math.random() * songs.length);
-                } else {
-                    currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-                }
-                loadSong(songs[currentIndex]);
-                togglePlayPause();
-            }
+                        function playPrevSong() {
+                            if (isShuffle) {
+                                currentIndex = Math.floor(Math.random() * songs.length);
+                            } else {
+                                currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+                            }
+                            loadSong(songs[currentIndex]);
+                            togglePlayPause();
+                        }
 
-            function toggleShuffle() {
-                isShuffle = !isShuffle;
-                const shuffleBtn = document.getElementById('shuffle-btn');
-                if (isShuffle) {
-                    shuffleBtn.classList.add('active');
-                } else {
-                    shuffleBtn.classList.remove('active');
-                }
-            }
+                        function toggleShuffle() {
+                            isShuffle = !isShuffle;
+                            const shuffleBtn = document.getElementById('shuffle-btn');
+                            if (isShuffle) {
+                                shuffleBtn.classList.add('active');
+                            } else {
+                                shuffleBtn.classList.remove('active');
+                            }
+                        }
 
-            function updateProgressBar() {
-                const audioPlayer = document.getElementById('audio-player');
-                const progressBar = document.getElementById('progress-bar');
-                const currentTimeElem = document.getElementById('current-time');
+                        function updateProgressBar() {
+                            const audioPlayer = document.getElementById('audio-player');
+                            const progressBar = document.getElementById('progress-bar');
+                            const currentTimeElem = document.getElementById('current-time');
 
-                // Calcular el progreso como un porcentaje
-                const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                // Actualizar el ancho de la barra de progreso
-                progressBar.style.width = `${progress}%`;
-                // Actualizar el tiempo actual
-                currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
-            }
+                            // Calcular el progreso como un porcentaje
+                            const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                            // Actualizar el ancho de la barra de progreso
+                            progressBar.style.width = `${progress}%`;
+                            // Actualizar el tiempo actual
+                            currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
+                        }
 
-            function formatTime(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-            }
+                        function formatTime(seconds) {
+                            const minutes = Math.floor(seconds / 60);
+                            const secs = Math.floor(seconds % 60);
+                            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+                        }
+                        });
+
+            
 
     </script>
 </body>
