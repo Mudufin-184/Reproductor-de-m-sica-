@@ -127,6 +127,7 @@ p {
 
 .list-music {
     overflow-y: auto;
+    transition: 5s;
 }
 
 .daily-playlists {
