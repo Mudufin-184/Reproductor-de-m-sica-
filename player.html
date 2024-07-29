@@ -229,8 +229,12 @@
                 currentIndex = (currentIndex + 1) % songs.length;
             }
             loadSong(songs[currentIndex]);
-            togglePlayPause();
+            // Reproducir automáticamente la siguiente canción
+            document.getElementById('audio-player').play();
+            isPlaying = true;
+            document.getElementById('play-pause-btn').innerHTML = '<i class="bi bi-pause-circle"></i>';
         }
+
 
         function playPrevSong() {
             if (isShuffle) {
